@@ -1,0 +1,15 @@
+{
+  "name": "clipstock",
+  "version": "2.0.0",
+  "private": true,
+  "description": "片仓 — 按员工和视频类型管理素材库存，支持团队云同步与耗尽预测",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node scripts/dev.cjs",
+    "build": "node scripts/build.cjs",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "dependencies": { "pg": "8.23.1" },
+  "devDependencies": { "@electric-sql/pglite": "0.5.11" }
+}

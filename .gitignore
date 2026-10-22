@@ -1,0 +1,19 @@
+node_modules/
+.vercel/
+.env
+.env.*
+!.env.example
+coverage/
+*.log
+.DS_Store
+release/
+work/
+backups/
+.vercel
+.env*
+
+# Provisioning tools can install local agent helpers; these are not app source.
+.agents/
+skills-lock.json
+
+!.env.example

@@ -1,0 +1,10 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
+const root=path.resolve(__dirname,'..');
+for(const file of ['app.js','model.js','cloud.js','team.js'])cp.execFileSync(process.execPath,['--check',path.join(root,'dist',file)]);
+const html=fs.readFileSync(path.join(root,'dist/index.html'),'utf8');
+for(const file of ['app.js','model.js','cloud.js','team.js','team.css'])if(!html.includes(file))throw Error('Missing asset: '+file);
+const release=path.join(root,'release');fs.mkdirSync(release,{recursive:true});
+const standalone=html.replace('<link rel="stylesheet" href="team.css">','<style>'+fs.readFileSync(path.join(root,'dist/team.css'),'utf8')+'</style>').replace(/<script src="([^"]+)"><\/script>/g,(_,file)=>'<script>\n'+fs.readFileSync(path.join(root,'dist',file),'utf8')+'\n</script>');
+fs.writeFileSync(path.join(release,'片仓.html'),standalone);
+console.log('Static app and server sources ready. Offline HTML generated in release/.');

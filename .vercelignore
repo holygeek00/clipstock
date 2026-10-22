@@ -1,0 +1,10 @@
+.git/
+node_modules/
+tests/
+release/
+work/
+backups/
+.env*
+
+.agents/
+skills-lock.json
