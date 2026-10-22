@@ -4,6 +4,7 @@ const roleNames={owner:'管理员',editor:'编辑成员',viewer:'只读成员'};
 const mutationSelectors='#add-btn,#base-date,#item-form button[type="submit"],#employee-form button[type="submit"],#movement-form button[type="submit"],#delete-item,#delete-employee,#start-btn,#clear-btn,#settings-form input,#settings-form select,#settings-form button,#type-form input,#type-form button,#import-btn,[data-restock],[data-consume],[data-edit],[data-edit-employee]';
 function cloudChrome(){
  const cloud=Cloud.mode==='cloud',account=Cloud.account;
+ $('#workspace-mode').textContent=cloud?'TEAM WORKSPACE':'LOCAL WORKSPACE';
  $('#team-open').textContent=account?account.teamName+' · '+roleNames[account.role]:'登录 / 团队同步';
  $('#draft-retry').disabled=Cloud.mode==='cloud'&&!Cloud.loaded;
  $('#team-summary').textContent=account?`${account.teamName} · ${account.name}（${roleNames[account.role]}）`:'当前为本机工作空间；登录后可使用团队云端库存。';
